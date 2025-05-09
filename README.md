@@ -87,8 +87,3 @@ Gemini API for movie recommendations.
 
 JavaScript and HTML community for open resources.
 
-
-Contact
-
-GitHub: https://github.com/your-username
-Email: your-email@example.com
