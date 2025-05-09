@@ -10,7 +10,13 @@
     />
     <link rel="stylesheet" href="./globalStyle.css" />
   </head>
-
+  <style>
+    .buttonContainer {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+  </style>
   <body>
     <div class="app-container">
       <div class="video-wrapper">
@@ -19,9 +25,10 @@
         <div id="scanBar"></div>
       </div>
 
-      <button onclick="captureImage()" class="scan-button">Scan Mood</button>
-      <button onclick="stopCamera()" class="stop-button">Stop Camera</button>
-
+      <div class="buttonContainer">
+        <button onclick="captureImage()" class="scan-button">Scan Mood</button>
+        <button onclick="stopCamera()" class="stop-button">Stop Camera</button>
+      </div>
       <div id="result" class="result-box"></div>
     </div>
   </body>

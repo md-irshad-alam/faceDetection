@@ -18,7 +18,7 @@ body {
 .app-container {
   text-align: center;
   width: 300px;
-  height: 600px;
+  height: 510px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
