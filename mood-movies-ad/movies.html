@@ -21,7 +21,8 @@
 
       .movie-details-container img {
         max-width: 90%;
-        height: auto;
+        height: 300px;
+        object-fit: cover;
         border-radius: 8px;
       }
 
@@ -36,9 +37,29 @@
         transition: background 0.3s ease;
         margin-top: 20px;
       }
-
+      .watchnowbtn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(to right, #00c9ff, #ff0080);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+      }
+      .watchnowbtn :hover {
+        background: linear-gradient(to right, #00b0e6, #e60073);
+      }
       .back-button:hover {
         background: linear-gradient(to right, #00b0e6, #e60073);
+      }
+
+      .watchNowbtngrp {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        justify-content: center;
       }
     </style>
   </head>
@@ -48,18 +69,32 @@
       <div class="movie-details-container">
         <h2 id="movie-title"></h2>
         <img id="movie-poster" src="" alt="Movie Poster" />
-        <button class="back-button" onclick="window.location.href='index.html'">
-          Back to Mood Scan
-        </button>
+        <div class="watchNowbtngrp">
+          <button
+            class="back-button"
+            onclick="window.location.href='index.html'"
+          >
+            Back
+          </button>
+          <button id="watchnow" class="watchnowbtn">Watch Now</button>
+        </div>
       </div>
     </div>
     <script>
       // Get the stored movie details from localStorage
       const movieDetails = JSON.parse(localStorage.getItem("recommendedMovie"));
 
+      // Add event listener to the "Watch Now" button
+      document.getElementById("watchnow").addEventListener("click", () => {
+        if (movieDetails && movieDetails.link) {
+          window.location.href = movieDetails.link;
+        } else {
+          alert("No link available for this movie.");
+        }
+      });
       if (movieDetails) {
-        document.getElementById("movie-title").textContent = movieDetails.title;
-        document.getElementById("movie-poster").src = movieDetails.poster;
+        document.getElementById("movie-title").textContent = movieDetails.name;
+        document.getElementById("movie-poster").src = movieDetails.thumbnail;
       } else {
         document.getElementById("movie-title").textContent =
           "No Movie Recommended";
