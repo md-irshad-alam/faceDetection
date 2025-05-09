@@ -18,18 +18,28 @@ body {
 .app-container {
   text-align: center;
   width: 300px;
-  width: 300px;
   height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Align items to the start */
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Clip content that overflows */
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add a subtle shadow */
 }
 
 .video-wrapper {
   position: relative;
-  width: 300px;
+  width: 100%;
+  /* Full width of app-container */
   height: 300px;
-  overflow: hidden;
   margin-bottom: 20px;
-  border-radius: 12px;
-  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+  /* Add a divider */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,10 +99,34 @@ canvas {
   min-height: 100px;
   font-size: 1em;
   text-align: center;
+  margin-top: 20px;
+  /* Added margin */
+  width: 90%;
+  /* Added width */
+  align-self: center;
+  /* Center horizontally */
 }
 
 .result-box img {
-  width: 200px;
+  max-width: 80%;
+  /* Responsive image width */
+  height: auto;
   border-radius: 8px;
   margin-top: 10px;
+}
+
+.view-movie-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(to right, #00c9ff, #ff0080);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 15px;
+}
+
+.view-movie-button:hover {
+  background: linear-gradient(to right, #00b0e6, #e60073);
 }

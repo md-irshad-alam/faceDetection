@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Recommendations</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./globalStyle.css" />
+    <style>
+      .movie-details-container {
+        width: 100%;
+        /* Take full width */
+        padding: 20px;
+        background-color: #1f1f1f;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .movie-details-container img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+
+      .back-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(to right, #00c9ff, #ff0080);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .back-button:hover {
+        background: linear-gradient(to right, #00b0e6, #e60073);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app-container">
+      <div class="movie-details-container">
+        <h2 id="movie-title"></h2>
+        <img id="movie-poster" src="" alt="Movie Poster" />
+        <button class="back-button" onclick="window.location.href='index.html'">
+          Back to Mood Scan
+        </button>
+      </div>
+    </div>
+    <script>
+      // Get the stored movie details from localStorage
+      const movieDetails = JSON.parse(localStorage.getItem("recommendedMovie"));
+
+      if (movieDetails) {
+        document.getElementById("movie-title").textContent = movieDetails.title;
+        document.getElementById("movie-poster").src = movieDetails.poster;
+      } else {
+        document.getElementById("movie-title").textContent =
+          "No Movie Recommended";
+      }
+    </script>
+  </body>
+</html>

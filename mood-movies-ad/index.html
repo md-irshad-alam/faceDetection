@@ -5,29 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mood Movie Ad</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter :wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./globalStyle.css" />
   </head>
-  <link rel="stylesheet" href="./globalStyle.css" />
 
   <body>
     <div class="app-container">
-      <!-- Video Container -->
       <div class="video-wrapper">
         <video id="video" autoplay muted></video>
         <canvas id="canvas" style="display: none"></canvas>
         <div id="scanBar"></div>
       </div>
 
-      <!-- Buttons -->
       <button onclick="captureImage()" class="scan-button">Scan Mood</button>
       <button onclick="stopCamera()" class="stop-button">Stop Camera</button>
 
-      <!-- Result Section -->
-      <div id="result" class="result-box">
-        <!-- Mood & Movie will appear here -->
-      </div>
+      <div id="result" class="result-box"></div>
     </div>
   </body>
   <script src="./index.js"></script>

@@ -2,13 +2,6 @@ const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const result = document.getElementById("result");
 
-result.addEventListener("click", (event) => {
-  const movieLink = event.target.closest("a");
-  if (movieLink) {
-    window.open(movieLink.href, "_blank");
-  }
-});
-
 const movieMap = {
   Happy: {
     title: "Welcome",
@@ -136,11 +129,13 @@ async function captureImage() {
 
       const movie = movieMap[mood] || movieMap["Neutral"];
 
+      // Store the movie details in localStorage
+      localStorage.setItem("recommendedMovie", JSON.stringify(movie));
+
       result.innerHTML = `
-        <h3>Mood Detected: ${mood}</h3>
-        <p>Recommended Movie: <strong>${movie.title}</strong></p>
-        <img src="${movie.poster}" alt="${movie.title} Poster" style="width:200px;" />
-      `;
+                <h3>Mood Detected: ${mood}</h3>
+                <button class="view-movie-button" onclick="window.location.href='movies.html'">View Movie</button>
+            `;
     } catch (err) {
       result.innerHTML = "Error detecting mood. " + err.message;
       console.error(err);
