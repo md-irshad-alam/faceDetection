@@ -1,6 +1,7 @@
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const result = document.getElementById("result");
+const scanButton = document.querySelector(".scan-button"); // Get the scan button
 
 const movieMap = {
   Happy: {
@@ -101,6 +102,10 @@ async function captureImage() {
   const scanBar = document.getElementById("scanBar");
   const result = document.getElementById("result");
 
+  // Disable the scan button
+  scanButton.disabled = true;
+  scanButton.textContent = "Scanning..."; // Optionally change button text
+
   // Reset scanner if already active
   scanBar.classList.remove("scan-active");
   void scanBar.offsetWidth; // Force reflow to restart animation
@@ -139,8 +144,11 @@ async function captureImage() {
     } catch (err) {
       result.innerHTML = "Error detecting mood. " + err.message;
       console.error(err);
+    } finally {
+      stopCamera();
+      // Re-enable the scan button
+      scanButton.disabled = false;
+      scanButton.textContent = "Scan Mood"; // Restore button text
     }
-
-    stopCamera();
   }, 4000); // matches 3s animation time
 }
